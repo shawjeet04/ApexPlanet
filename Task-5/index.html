@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Using PHP And MySQL</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            /* Background Image */
+            background-image: url('abc.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2, h3 {
+            color: #1a1a1a;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Form Styling */
+        .writing-section form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Important for padding */
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .date-container {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        #blogDate {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .form-button:hover {
+            background-color: #218838;
+        }
+
+        /* Blog Display Section */
+        .blog-display-section {
+            margin-top: 40px;
+            border-top: 2px solid #eee;
+            padding-top: 20px;
+        }
+
+        .blog-post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .blog-post h3 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+
+        .post-date {
+            display: block;
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="writing-section">
+      <h1>Create a New Post</h1>
+      <form action="blog_post_process.php" method="POST">
+        <input class="form-input" id="blogTitle" name="blogtitle" type="text" placeholder="Blog Title..." autocomplete="off" required>
+        
+        <div class="date-container">
+          <label id="dateLabel" for="blogDate">Date:</label>
+          <input id="blogDate" name="blogdate" readonly title="Blog Date">
+        </div>
+        
+        <textarea class="form-textarea" id="blogPara" name="blogpara" rows="10" placeholder="Write your blog content here..." autocomplete="off" required></textarea>
+        
+        <button class="form-button" id="saveBtn" type="submit">Save Post</button>
+      </form>
+    </div>
+
+    <div class="blog-display-section">
+        <h2>Recent Posts</h2>
+        
+        <article class="blog-post">
+            <h3>Sample Blog Title</h3>
+            <span class="post-date">2025-08-18</span>
+            <p>This is a sample paragraph showing how a blog post will be displayed. Your actual content from the database will appear here once you connect your PHP code to read from the 'posts' table.</p>
+        </article>
+        
+        <article class="blog-post">
+            <h3>Another Example Post</h3>
+            <span class="post-date">2025-08-17</span>
+            <p>Each post will be displayed in its own container like this one, creating a clean and organized blog feed.</p>
+        </article>
+
+    </div>
+  </div>
+
+  <script>
+    // Sets the date input to the current date automatically
+    document.getElementById("blogDate").value = new Date().toISOString().split('T')[0];
+  </script>
+
+</body>
+</html>
